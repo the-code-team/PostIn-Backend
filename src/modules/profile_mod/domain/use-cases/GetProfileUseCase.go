@@ -1,20 +1,27 @@
 package usecases
 
 import (
+	"context"
 	"github.com/gogolfing/cbus"
 
-	"../../../../providers"
-	"../queries"
+	"epsa.upv.es/postin_backend/src/modules/profile_mod/domain/queries"
+	"epsa.upv.es/postin_backend/src/providers"
 )
 
 func GetProfileUseCase() {
 	bus := providers.GetCommandBus()
 
-	bus.Handle(&GetProfileQuery{}, HandlerFunc(func(ctx context.Context, command Command) (interface{}, error) {
-		user := &User{
-			Name: command.(*CreateUserCommand).Name,
-		}
-		return user, nil
-	}))
-	
+	bus.Handle(&queries.GetProfileQuery{}, cbus.HandlerFunc(
+		func(ctx context.Context, command cbus.Command) (interface{}, error) {
+			db := providers.GetDatabase()
+
+			/*
+				user := &User{
+					Name: command.(*CreateUserCommand).Name,
+				}
+				return user, nil
+			*/
+		}),
+	)
+
 }
