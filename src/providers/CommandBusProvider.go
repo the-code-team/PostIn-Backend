@@ -17,16 +17,3 @@ func GetCommandBus() *cbus.Bus {
 
 	return bus
 }
-
-func ConfigureCommandBus() {
-	bus = GetCommandBus()
-
-	/* Commented out for now
-	bus.Handle(&CreateUserCommand{}, HandlerFunc(func(ctx context.Context, command Command) (interface{}, error) {
-		user := &User{
-			Name: command.(*CreateUserCommand).Name,
-		}
-		return user, nil
-	}))
-	*/
-}

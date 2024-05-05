@@ -2,6 +2,11 @@ module epsa.upv.es/postin_backend
 
 go 1.21
 
+replace epsa.upv.es/postin_backend/providers => ./src/providers
+replace epsa.upv.es/postin_backend/models => ./src/models
+replace epsa.upv.es/postin_backend/controllers => ./src/controllers
+replace epsa.upv.es/postin_backend/modules => ./src/modules
+
 require gorm.io/driver/postgres v1.5.7
 
 require github.com/jmespath/go-jmespath v0.4.0 // indirect
@@ -11,7 +16,7 @@ require (
 	github.com/aws/aws-sdk-go v1.52.2
 	github.com/bytedance/sonic v1.9.1 // indirect
 	github.com/chenzhuoyu/base64x v0.0.0-20221115062448-fe3a3abad311 // indirect
-	github.com/gabriel-vasile/mimetype v1.4.2 // indirect
+	github.com/gabriel-vasile/mimetype v1.4.3 // indirect
 	github.com/gin-contrib/sse v0.1.0 // indirect
 	github.com/gin-gonic/gin v1.9.1 // indirect
 	github.com/go-playground/locales v0.14.1 // indirect
