@@ -18,27 +18,23 @@ var (
 
 func GetStorageClient() *s3.Client {
 	storageOnce.Do(func() {
-		// Load the SDK's configuration from the environment only
-		// We need to load also the endpoint
+		// Load the SDK's configuration from the environment
 		cfg, err := config.LoadDefaultConfig(
 			context.Background(),
 			config.WithRegion("eu-west-1"),
-			config.WithEndpointResolver(s3.EndpointResolverFunc(
-				func(region string, options s3.EndpointResolverOptions) (aws.Endpoint, error) {
-					return aws.Endpoint{
-						URL: os.Getenv("S3_ENDPOINT"),
-					}, nil
-				},
-			)),
 		)
 
 		if err != nil {
 			log.Fatal(err)
 		}
 
-		instance = s3.NewFromConfig(cfg)
+		// Create an Amazon S3 service client
+		instance = s3.NewFromConfig(cfg, func(options *s3.Options) {
+			options.BaseEndpoint = aws.String(os.Getenv("S3_ENDPOINT"))
+		})
 	})
 
+	// Return the instance
 	return instance
 }
 
