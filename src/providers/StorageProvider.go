@@ -9,8 +9,8 @@ import (
 )
 
 var (
-	storageOnce     sync.Once
-	instance 		*s3.S3
+	storageOnce sync.Once
+	instance    *s3.S3
 )
 
 func GetStorageClient() *s3.S3 {
@@ -25,4 +25,8 @@ func GetStorageClient() *s3.S3 {
 	})
 
 	return instance
+}
+
+func InitStorageClient() {
+	GetStorageClient()
 }

@@ -2,24 +2,22 @@ package usecases
 
 import (
 	"context"
-	"github.com/gogolfing/cbus"
-
 	"epsa.upv.es/postin_backend/src/models"
+	"epsa.upv.es/postin_backend/src/modules/profile_mod/domain/commands"
 	"epsa.upv.es/postin_backend/src/modules/profile_mod/domain/queries"
 	"epsa.upv.es/postin_backend/src/providers"
+	"github.com/gogolfing/cbus"
 )
 
-func GetProfileUseCase() {
+func DeleteProfileUseCase() {
 	bus := providers.GetCommandBus()
 
-	bus.Handle(&queries.GetProfileQuery{}, cbus.HandlerFunc(
+	bus.Handle(&commands.DeleteProfileCommand{}, cbus.HandlerFunc(
 		func(ctx context.Context, command cbus.Command) (interface{}, error) {
 			db := providers.GetDatabase()
-			result := models.Profile{}
+			db.Model(&models.Profile{}).Where("Email = ?", command.(*queries.GetProfileQuery).Email).Delete(&command)
 
-			db.Model(&models.Profile{}).Where("Email = ?", command.(*queries.GetProfileQuery).Email).First(&result)
-
-			return result, nil
+			return nil, nil
 		}),
 	)
 }

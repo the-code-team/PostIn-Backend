@@ -5,7 +5,10 @@ import (
 )
 
 var Handlers = []func(){
+	usecases.UpsertProfileUseCase,
+	usecases.DeleteProfileUseCase,
 	usecases.GetProfileUseCase,
+	usecases.UpdatePhotosUseCase,
 }
 
 func ProfileModule() {

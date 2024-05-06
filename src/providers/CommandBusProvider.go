@@ -1,13 +1,13 @@
 package providers
 
 import (
-	"sync"
 	"github.com/gogolfing/cbus"
+	"sync"
 )
 
 var (
 	busOnce sync.Once
-	bus  *cbus.Bus
+	bus     *cbus.Bus
 )
 
 func GetCommandBus() *cbus.Bus {
@@ -16,4 +16,8 @@ func GetCommandBus() *cbus.Bus {
 	})
 
 	return bus
+}
+
+func InitCommandBus() {
+	GetCommandBus()
 }
