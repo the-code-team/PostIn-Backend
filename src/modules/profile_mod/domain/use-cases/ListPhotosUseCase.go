@@ -14,7 +14,6 @@ import (
 
 func ListPhotosUseCase() {
 	bus := providers.GetCommandBus()
-
 	bus.Handle(&queries.ListPhotosQuery{}, cbus.HandlerFunc(ListPhotosHandler))
 }
 
