@@ -29,7 +29,11 @@ func GetDatabase() *gorm.DB {
 
 func InitDatabase() {
 	db := GetDatabase()
-	err := db.AutoMigrate(&models.Profile{})
+
+	err := db.AutoMigrate(
+		&models.Event{}, &models.Message{},
+		&models.Profile{}, &models.Propose{},
+	)
 
 	if err != nil {
 		panic("failed to migrate database")
