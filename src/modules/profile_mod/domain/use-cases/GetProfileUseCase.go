@@ -12,14 +12,24 @@ import (
 func GetProfileUseCase() {
 	bus := providers.GetCommandBus()
 
-	bus.Handle(&queries.GetProfileQuery{}, cbus.HandlerFunc(
-		func(ctx context.Context, command cbus.Command) (interface{}, error) {
-			db := providers.GetDatabase()
-			result := models.Profile{}
+	bus.Handle(&queries.GetProfileQuery{}, cbus.HandlerFunc(GetProfileHandler))
+}
 
-			db.Model(&models.Profile{}).Where("Email = ?", command.(*queries.GetProfileQuery).Email).First(&result)
+func GetProfileHandler(ctx context.Context, command cbus.Command) (interface{}, error) {
+	// Get the providers
+	db := providers.GetDatabase()
 
-			return result, nil
-		}),
-	)
+	// Get the profile
+	result := models.Profile{}
+
+	query := db.Model(&models.Profile{})
+	query = query.Where("Email = ?", command.(*queries.GetProfileQuery).Email)
+	query = query.First(&result)
+
+	if query.Error != nil {
+		return nil, query.Error
+	}
+
+	// Return the profile
+	return result, nil
 }
