@@ -9,15 +9,15 @@ import (
 )
 
 var (
-	storageOnce     sync.Once
-	instance 		*s3.S3
+	storageOnce sync.Once
+	instance    *s3.S3
 )
 
 func GetStorageClient() *s3.S3 {
 	storageOnce.Do(func() {
 		// Create a new AWS session
 		sess := session.Must(session.NewSession(&aws.Config{
-			Region: aws.String("us-west-2"), // Replace with your desired region
+			Region: aws.String("us-west-2"),
 		}))
 
 		// Create a new S3 client
@@ -25,4 +25,8 @@ func GetStorageClient() *s3.S3 {
 	})
 
 	return instance
+}
+
+func InitStorageClient() {
+	GetStorageClient()
 }

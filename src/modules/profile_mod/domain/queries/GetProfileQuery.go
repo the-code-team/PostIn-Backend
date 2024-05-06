@@ -1,7 +1,9 @@
-type GetUserQuery struct {
-	userId string
+package queries
+
+type GetProfileQuery struct {
+	Email string
 }
 
-func (self *GetUserQuery) execute() (User, error) {
-	return GetUser(self.userId)
+func (q *GetProfileQuery) Type() string {
+	return "GetProfileQuery"
 }
