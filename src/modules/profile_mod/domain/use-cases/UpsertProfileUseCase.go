@@ -10,13 +10,20 @@ import (
 
 func UpsertProfileUseCase() {
 	bus := providers.GetCommandBus()
+	bus.Handle(&commands.UpsertProfileCommand{}, cbus.HandlerFunc(UpsertProfileHandler))
+}
 
-	bus.Handle(&commands.UpsertProfileCommand{}, cbus.HandlerFunc(
-		func(ctx context.Context, command cbus.Command) (interface{}, error) {
-			db := providers.GetDatabase()
-			db.Model(&models.Profile{}).Save(&command)
+func UpsertProfileHandler(ctx context.Context, command cbus.Command) (interface{}, error) {
+	// Get the providers
+	db := providers.GetDatabase()
 
-			return nil, nil
-		}),
-	)
+	// Save the profile
+	query := db.Model(&models.Profile{}).Save(&command)
+
+	if query.Error != nil {
+		return nil, query.Error
+	}
+
+	// The profile has been saved successfully
+	return nil, nil
 }
