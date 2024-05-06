@@ -11,7 +11,6 @@ import (
 
 func GetProfileUseCase() {
 	bus := providers.GetCommandBus()
-
 	bus.Handle(&queries.GetProfileQuery{}, cbus.HandlerFunc(GetProfileHandler))
 }
 
