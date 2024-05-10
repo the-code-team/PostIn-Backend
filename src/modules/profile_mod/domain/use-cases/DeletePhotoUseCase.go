@@ -11,16 +11,16 @@ import (
 	"os"
 )
 
-func DeleteProfileUseCase() {
+func DeletePhotoUseCase() {
 	bus := providers.GetCommandBus()
-	bus.Handle(&commands.DeleteProfileCommand{}, cbus.HandlerFunc(DeleteProfileHandler))
+	bus.Handle(&commands.DeletePhotoCommand{}, cbus.HandlerFunc(DeletePhotoHandler))
 }
 
-func DeleteProfileHandler(ctx context.Context, command cbus.Command) (interface{}, error) {
+func DeletePhotoHandler(ctx context.Context, command cbus.Command) (interface{}, error) {
 	// Get the providers
 	db := providers.GetDatabase()
-	s3Client := providers.GetStorageClient()
 	cache := providers.GetQueryCacheProvider()
+	s3Client := providers.GetStorageClient()
 
 	// Get the profile
 	profile := &models.Profile{}
@@ -28,7 +28,7 @@ func DeleteProfileHandler(ctx context.Context, command cbus.Command) (interface{
 	// Get the profile from the database
 	query := cache.Wrap(
 		db.Model(&models.Profile{}).
-			Where("Email = ?", command.(*commands.DeleteProfileCommand).Email),
+			Where("Email = ?", command.(*commands.DeletePhotoCommand).Email),
 	)
 
 	// Return the profile into the result variable
@@ -38,23 +38,16 @@ func DeleteProfileHandler(ctx context.Context, command cbus.Command) (interface{
 		return nil, query.Error
 	}
 
-	// Delete the profile folder from S3 storage
+	// Delete the photo from the storage with Amazon S3 API
 	_, err := s3Client.DeleteObject(ctx, &s3.DeleteObjectInput{
 		Bucket: aws.String(os.Getenv("S3_BUCKET")),
-		Key:    aws.String(`profiles/` + profile.UserId + `/`),
+		Key:    aws.String(`profiles/` + profile.UserId + `/photo/` + string(rune(command.(*commands.DeletePhotoCommand).PhotoId))),
 	})
 
 	if err != nil {
 		return nil, err
 	}
 
-	// Delete the profile from the database
-	query = db.Model(&models.Profile{}).Delete(&profile)
-
-	if query.Error != nil {
-		return nil, query.Error
-	}
-
-	// The profile has been deleted successfully
+	// The photo has been deleted successfully
 	return nil, nil
 }

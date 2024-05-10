@@ -20,13 +20,20 @@ func ListPhotosUseCase() {
 func ListPhotosHandler(ctx context.Context, command cbus.Command) (interface{}, error) {
 	// Get the providers
 	db := providers.GetDatabase()
+	cache := providers.GetQueryCacheProvider()
 	s3Client := providers.GetStorageClient()
 	s3Signer := s3.NewPresignClient(s3Client)
 
 	// Get the profile
 	profile := &models.Profile{}
-	query := db.Model(&models.Profile{})
-	query = query.Where("Email = ?", command.(*queries.ListPhotosQuery).Email)
+
+	// Get the profile from the database
+	query := cache.Wrap(
+		db.Model(&models.Profile{}).
+			Where("Email = ?", command.(*queries.ListPhotosQuery).Email),
+	)
+
+	// Return the profile into the result variable
 	query = query.First(&profile)
 
 	if query.Error != nil {

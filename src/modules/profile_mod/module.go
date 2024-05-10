@@ -5,6 +5,7 @@ import (
 )
 
 var Handlers = []func(){
+	usecases.DeletePhotoUseCase,
 	usecases.DeleteProfileUseCase,
 	usecases.GetProfileUseCase,
 	usecases.ListPhotosUseCase,
