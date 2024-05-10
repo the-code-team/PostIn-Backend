@@ -20,12 +20,18 @@ func UpdatePhotosUseCase() {
 func UpdatePhotoHandler(ctx context.Context, command cbus.Command) (interface{}, error) {
 	// Get the providers
 	db := providers.GetDatabase()
+	cache := providers.GetQueryCacheProvider()
 	s3Client := providers.GetStorageClient()
 
-	// Get the profile
 	profile := &models.Profile{}
-	query := db.Model(&models.Profile{})
-	query = query.Where("Email = ?", command.(*commands.UpdatePhotosCommand).Email)
+
+	// Get the profile from the database
+	query := cache.Wrap(
+		db.Model(&models.Profile{}).
+			Where("Email = ?", command.(*commands.UpdatePhotosCommand).Email),
+	)
+
+	// Return the profile into the result variable
 	query = query.First(&profile)
 
 	if query.Error != nil {

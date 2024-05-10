@@ -1,5 +1,9 @@
 package models
 
+import (
+	"github.com/google/uuid"
+)
+
 type ProposeStatus string
 
 const (
@@ -10,7 +14,7 @@ const (
 
 type Propose struct {
 	UserId  string        `gorm:"primaryKey"`
-	EventId string        `gorm:"primaryKey"`
+	EventId uuid.UUID     `gorm:"primaryKey"`
 	Status  ProposeStatus `gorm:"default:pending"`
 
 	Profile Profile `gorm:"foreignKey:UserId"`

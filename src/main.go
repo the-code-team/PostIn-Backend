@@ -2,6 +2,7 @@ package main
 
 import (
 	"epsa.upv.es/postin_backend/src/modules/profile_mod"
+	"epsa.upv.es/postin_backend/src/modules/proposes_mod"
 	"epsa.upv.es/postin_backend/src/providers"
 	"github.com/gin-gonic/gin"
 )
@@ -21,6 +22,7 @@ func main() {
 
 	// Initialize Modules
 	profile_mod.ProfileModule()
+	proposes_mod.ProposesModule()
 
 	// Run the server
 	route.Run(":8080")

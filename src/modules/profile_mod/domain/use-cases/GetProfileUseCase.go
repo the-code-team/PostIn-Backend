@@ -17,12 +17,18 @@ func GetProfileUseCase() {
 func GetProfileHandler(ctx context.Context, command cbus.Command) (interface{}, error) {
 	// Get the providers
 	db := providers.GetDatabase()
+	cache := providers.GetQueryCacheProvider()
 
 	// Get the profile
 	result := models.Profile{}
 
-	query := db.Model(&models.Profile{})
-	query = query.Where("Email = ?", command.(*queries.GetProfileQuery).Email)
+	// Get the profile from the database
+	query := cache.Wrap(
+		db.Model(&models.Profile{}).
+			Where("Email = ?", command.(*queries.GetProfileQuery).Email),
+	)
+
+	// Return the profile into the result variable
 	query = query.First(&result)
 
 	if query.Error != nil {
