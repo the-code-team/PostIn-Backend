@@ -20,6 +20,8 @@ type Event struct {
 	Title       string
 	Description string
 
+	Price 	    float32
+
 	LocationName string
 	Latitude     float64
 	Longitude    float64
