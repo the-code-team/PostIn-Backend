@@ -1,4 +1,4 @@
-package proposes_mod
+package events_mod
 
 import (
 	usecases "epsa.upv.es/postin_backend/src/modules/events_mod/domain/use-cases"
