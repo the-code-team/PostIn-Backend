@@ -1,33 +1,28 @@
 package models
 
-import "github.com/google/uuid"
+import (
+	"github.com/google/uuid"
+	"time"
+)
 
-/*
-INFO: Below is the Prefered way to query the events table:
-SELECT *
-FROM Events
-WHERE earth_distance(
-
-	ll_to_earth(Events.Latitude, Events.Longitude),
-	ll_to_earth(:Latitude, :Longitude),
-
-) < :Radius;
-*/
 type Event struct {
 	EventId    uuid.UUID `gorm:"primaryKey;type:uuid;default:uuid_generate_v4()"`
-	HostUserId string
+	HostUserId string    `json:"host_user_id","omitempty"`
 
-	Title       string
-	Description string
+	Title       string `json:"title","omitempty"`
+	Description string `json:"description","omitempty"`
 
 	Price 	    float32
 
 	LocationName string
-	Latitude     float64
-	Longitude    float64
+	Latitude  float64 `json:"latitude","omitempty"`
+	Longitude float64 `json:"longitude","omitempty"`
 
-	Tags      []Tag
-	PhotosUri []string
+	DateEvent             time.Time `json:"date_event","omitempty"`
+	OpenInscriptionsUntil time.Time `json:"open_inscriptions_until","omitempty"`
 
-	Profile Profile `gorm:"foreignKey:HostUserId"`
+	Tags      []Tag    `json:"tags","omitempty"`
+	PhotosUri []string `json:"photos_uri","omitempty"`
+
+	Profile Profile `gorm:"foreignKey:HostUserId" json:"profile","omitempty"`
 }
