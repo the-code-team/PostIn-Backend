@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="ALL" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="429bbde1-dcec-47bb-88e3-703af190b315" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/api_documentation.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controllers/ProposesCtrl.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/messages_mod/domain/commands/PublishMessageCommand.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/messages_mod/domain/queries/GetMessagesQuery.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/messages_mod/domain/use-cases/GetMessagesUseCase.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/messages_mod/domain/use-cases/PublishMessageUseCase.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/EventsCtrl.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/EventsCtrl.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/MessagesCtrl.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/MessagesCtrl.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/ProfileCtrl.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/ProfileCtrl.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/PropousesCtrl.go" beforeDir="false" afterPath="$PROJECT_DIR$/.docker/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/Event.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/Event.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/Profile.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/Profile.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/messages_mod/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/.docker/docker-compose.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/notifications_mod/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/messages_mod/module.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/proposes_mod/domain/use-cases/GenerateProposeUseCase.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/proposes_mod/domain/use-cases/GenerateProposeUseCase.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/providers/DatabaseProvider.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/providers/DatabaseProvider.go" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Go File" />
+        <option value="OpenAPI" />
+      </list>
+    </option>
+  </component>
+  <component name="GOROOT" url="file:///usr/lib/sdk/golang" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 0
+}</component>
+  <component name="ProjectId" id="2grUwXSpsbG27PqvWkO5NEehqJr" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultGoTemplateProperty": "Go File",
+    "Docker..docker/docker-compose.yaml: Compose Deployment.executor": "Run",
+    "Go Build.go build epsa.upv.es/postin_backend/src.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.go.formatter.settings.were.checked": "true",
+    "RunOnceActivity.go.migrated.go.modules.settings": "true",
+    "RunOnceActivity.go.modules.automatic.dependencies.download": "true",
+    "RunOnceActivity.go.modules.go.list.on.any.changes.was.set": "true",
+    "git-widget-placeholder": "feat/Events__Module",
+    "go.import.settings.migrated": "true",
+    "go.sdk.automatically.set": "true",
+    "last_opened_file_path": "/var/home/neirth",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/modules/notifications_mod/domain" />
+      <recent name="$PROJECT_DIR$/src/modules/messages_mod/domain" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Docker..docker/docker-compose.yaml: Compose Deployment">
+    <configuration name="go build epsa.upv.es/postin_backend/src" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="PostIn-Backend" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="epsa.upv.es/postin_backend/src" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$/src/main.go" />
+      <method v="2" />
+    </configuration>
+    <configuration name=".docker/docker-compose.yaml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="envFilePath" value="" />
+          <option name="sourceFilePath" value=".docker/docker-compose.yaml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
+      <deployment type="docker-compose.yml" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Docker..docker/docker-compose.yaml: Compose Deployment" />
+        <item itemvalue="Go Build.go build epsa.upv.es/postin_backend/src" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-gosdk-33c477a475b1-e0158606a674-org.jetbrains.plugins.go.sharedIndexes.bundled-GO-241.15989.157" />
+        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-GO-241.15989.157" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VgoProject">
+    <settings-migrated>true</settings-migrated>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/src/modules/messages_mod/module.go</url>
+          <line>2</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
