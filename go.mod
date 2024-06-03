@@ -8,6 +8,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/s3 v1.54.2
 	github.com/go-redis/redis/v8 v8.11.5
 	github.com/google/uuid v1.6.0
+	github.com/gorilla/websocket v1.5.1
 	gorm.io/driver/postgres v1.5.7
 )
 
