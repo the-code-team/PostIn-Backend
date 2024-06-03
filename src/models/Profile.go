@@ -7,5 +7,5 @@ type Profile struct {
 	LastName       string `json:"last_name,omitempty"`
 	ProfilePicture string `json:"profile_picture,omitempty"`
 
-	Tag []Tag `json:"tag,omitempty"`
+	Tag []string `json:"tag,omitempty"`
 }

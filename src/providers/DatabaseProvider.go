@@ -16,7 +16,7 @@ var (
 
 func GetDatabase() *gorm.DB {
 	dbOnce.Do(func() {
-		dsn := os.Getenv("DATABASE_URI")
+		dsn := os.Getenv("DATABASE_URL")
 		db, err = gorm.Open(postgres.Open(dsn), &gorm.Config{})
 	})
 
